@@ -311,7 +311,7 @@ function drawBars(array) {
 	//the max count of bins for the visualization
 	var maxBinCount = array.length;
 	//space between bins
-	var space = 0;
+	var space = 3;
 
 	// simply replace 'spectrumGradient' with the desired colour to get a single-coloured visualiser
 	let spectrumGradient = ctx.createLinearGradient(0, 0, 0, 170);
@@ -367,8 +367,6 @@ function drawBars(array) {
 		var value = array[i];
 		if (value >= threshold) {			
 			//draw bin
-			//ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
-                        //ctx.fillRect(i * space, c.height, 2, -value);
                         ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
                         ctx.rotate((180 / 128) * Math.PI/180);   
 		}
