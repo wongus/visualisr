@@ -1,10 +1,14 @@
 @charset "utf-8";
 
-$primary: #faf3dd;
-$shadow: #d5cfbc;
-$highlight: #fffffe;
+$primary: #575761;
+$shadow: #4a4a52;
+$highlight: #646470;
+$branding: #ffbf46;
+$spotify: #8acb88;
 
-$seconary: $highlight;
+$secondary: $highlight;
+$warning: $branding;
+$info: $spotify;
 
 /*
  * Audiovisualization using the html canvas element.
@@ -15,32 +19,52 @@ $seconary: $highlight;
  */
 
 #freq {
-    background: $primary;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='318' height='318' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23d5cfbc' fill-opacity='0.04'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.04'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
     left: 0;
     right: 0;
     margin: 0 auto;
     position: absolute;
+    background: $primary;
+}
+
+.navbar-item.navbar-center {
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .navbar-brand {
     font-family: 'Sora';
-    color: $primary !important;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-shadow: 1px 1px 0px $shadow,
         -1px -1px 0px $highlight;
+}
+
+.brand {
+    font-family: 'Sora';
+    color: #ffffff;
+    text-shadow: 1px 1px 0px $shadow,
+        -1px -1px 0px $highlight; 
 }
 
 body {
     background: $primary;
     overflow: hidden;
+    height: 100vh;
+    width: 100vw;
 }
 
 #buttons {
     position: absolute;
     width: 100vw;
-    background: #faf3dd;
-    box-shadow:  5px 5px 9px #d5cfbc; 
+    box-shadow:  5px 5px 9px $shadow; 
+}
+
+.none {
+    display: none;
+}
+
+.flex {
+    display: flex;
 }
 
 .hidden {
@@ -59,12 +83,10 @@ body {
     width: 100%;
     z-index: 999;
     font-weight: 100;
-    font-family: "Cutive Mono", sans-serif;
-    color: $primary;
+    font-family: "Sora";
+    color: #ffffff;
     visibility: hidden;
     letter-spacing: -.05em;
-    text-shadow: 1px 1px 0px $shadow,
-        -1px -1px 0px $highlight;
     margin-bottom: 15px;
 }
 

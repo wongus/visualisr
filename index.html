@@ -1,69 +1,55 @@
 <!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta content='IE=8' http-equiv='X-UA-Compatible'>
-    <title>visualisr</title>
-    <meta name="viewport" content="width=device-width">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/mystyles.css">
     <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500&display=swap" rel="stylesheet">
-    <!--[if lt IE 9]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="src/bufferloader.js"></script>
-    <script src="src/id3-minimized.js"></script>
-    <script src="src/audiovisualisierung.js"></script>
     <script src="https://kit.fontawesome.com/5b65a26ca8.js" crossorigin="anonymous"></script>
+    <title>visualisr</title>
 </head>
 
 <body>
-    <nav class="navbar" id="buttons" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-primary" id="buttons" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <h1 class="navbar-item">
+            <p class="navbar-item">
                 visualisr
-            </h1>
+            </p>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
-        <div class="navbar-end pr-3">
-            <div class="navbar-item">
-                <div class="buttons">
-                    <button class="button is-primary pl-0 pr-0 is-small is-rounded">
-                        <label class="file-label">
-                            <input class="file-input" type="file" id="input" onchange="handleFiles(this.files)" />
-                            <span class="file-cta">
-                                <span class="file-icon">
-                                    <i class="fas fa-upload"></i>
-                                </span>
-                                <span class="file-label">
-                                    Choose a file…
-                                </span>
-                            </span>
-                        </label>
-                    </button>
-                    <button class="button is-small is-secondary" id="useMicButton" onClick="useMic()"><i
-                            class="fas fa-microphone"></i>
-                        <p class="pl-1">Use
-                            Microphone</p>
-                        </button>
-                    <a class="button is-small is-secondary" onClick="hide()"><i class="far fa-eye-slash"></i>
-                        <p class="pl-1">Toggle visibility</p>
-                    </a>
-                    <a class="button is-small is-secondary" onClick="stop()"><i class="fas fa-ban"></i>
-                        <p class="pl-1">Stop</p>
-                    </a>
+        <div id="navbarBasicExample" class="navbar-menu">
+
+        </div>
+    </nav>
+    <section class="hero is-primary is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <img src="images/music.svg" style="width: 50rem; height: auto;">
+
+                <div class="brand is-size-1-desktop is-size-2-mobile">
+                    visualisr
+                </div>
+
+                <div class="subititle pb-5 mb-5">
+                    an accessible platform for all your music visualisation needs
+                </div>
+
+                <div class="has-text-centered">
+                    <a href="visualiser.html?mp3" class="button is-warning is-rounded is-size-7-mobile"><i class="far fa-file-audio pr-1"></i>Use an mp3</a>
+                    <a href="visualiser.html?mic" class="button is-warning is-rounded is-size-7-mobile"><i class="fas fa-microphone-alt pr-1"></i>Use your mic</a>
+                    <a href="visualiser.html?spotify" class="button is-info is-rounded is-size-7-mobile"><i class="fab fa-spotify pr-1"></i>Use spotify</a>
                 </div>
             </div>
         </div>
-    </nav>
-
-
-    <span id="loading"></span>
-    <div id="song_info_wrapper">
-        <div id="artist">Unknown Artist</div>
-        <div id="title">Unknown Titel</div>
-        <div id="album">Unknown Album</div>
-    </div>
-    <canvas id="freq" width="1024" height="525"></canvas>
+    </section>
 </body>
 
 </html>

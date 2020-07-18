@@ -25,12 +25,42 @@ var AudioContext = AudioContext || webkitAudioContext;
 var context = new AudioContext();
 
 //change the colours used in the gradient
-let colorStart = '#ecb487';
+let colorStart = '#ffbf46';
 let colorEnd = '#ffdab9';
 
+
+let userChoice = null;
 //using requestAnimationFrame instead of timeout...
 if (!window.requestAnimationFrame)
 	window.requestAnimationFrame = window.webkitRequestAnimationFrame;
+
+try {
+	if (window.location.href.endsWith('mp3')) {
+		console.log('using mp3');
+		document.getElementById('mic').classList.toggle('none');
+	}
+} catch {
+
+}
+
+try {
+	if (window.location.href.endsWith('mic')) {
+		console.log('using mic');
+		document.getElementById('mic').classList.toggle('flex');
+	}
+} catch {
+
+}
+
+try {
+	if (window.location.href.endsWith('spotify')) {
+		console.log('using spotify');
+	}
+} catch {
+
+}
+
+
 
 $(function () {
 	"use strict";
@@ -117,42 +147,22 @@ function handleFiles(files) {
 	$("button, input").prop("disabled", true);
 }
 
-function playSample() {
+function pause() {
+	context.suspend();
+	document.getElementById('pause').style.display = 'none';
+	document.getElementById('resume').style.display = 'flex';
+}
 
-	fileChosen = true;
-	setupAudioNodes();
+function resume() {
+	context.resume();
+	document.getElementById('pause').style.display = 'flex';
+	document.getElementById('resume').style.display = 'none';
+}
 
-	var request = new XMLHttpRequest();
-
-	request.addEventListener("progress", updateProgress);
-	request.addEventListener("load", transferComplete);
-	request.addEventListener("error", transferFailed);
-	request.addEventListener("abort", transferCanceled);
-
-	request.responseType = 'arraybuffer';
-
-	// When loaded decode the data
-	request.onload = function () {
-
-		$("#title").html("Infinite");
-		$("#album").html("Infinite");
-		$("#artist").html("Valence");
-		onWindowResize();
-		$("#title, #artist, #album").css("visibility", "visible");
-
-		// decode the data
-		context.decodeAudioData(request.response, function (buffer) {
-			// when the audio is decoded play the sound
-			sourceNode.buffer = buffer;
-			sourceNode.start(0);
-			//on error
-		}, function (e) {
-			console.log(e);
-		});
-	};
-	request.send();
-
-	$("button, input").prop("disabled", true);
+function stop() {
+	reset();
+	$("#title, #artist, #album").css("visibility", "hidden");
+	$("button, input").prop("disabled", false);
 }
 
 function useMic() {
@@ -190,10 +200,6 @@ function useMic() {
 			console.log('capturing microphone data failed!');
 			console.log(err);
 		});
-}
-
-function stop() {
-	window.location.reload();
 }
 
 // progress on transfers from the server to the client (downloads)
