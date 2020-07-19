@@ -12,7 +12,6 @@
     "node-sass": "^4.14.1",
     "node-static": "^0.7.11"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
