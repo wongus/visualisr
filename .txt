@@ -1,5 +1,0 @@
-https%3A%2F%2Fvisualisr.herokuapp.com%2Fvisualiser.html%3Fspotify
-552253afcb844aa8ae4931958d03f443
-c8975336c3814d4e8a8342e7dc536449
-
-https://accounts.spotify.com/authorize?client_id=552253afcb844aa8ae4931958d03f443&response_type=code&redirect_uri=https%3A%2F%2Fvisualisr.herokuapp.com%2Fvisualiser.html%3Fspotify&scope=user-read-currently-playing&user-modify-playback-state&

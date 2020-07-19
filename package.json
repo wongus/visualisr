@@ -1,13 +1,11 @@
 {
   "name": "audiovisualization-master",
   "version": "1.0.0",
-  "description": "[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=W44KZGZL2LFLL)",
   "main": "index.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-static": "^0.7.11",
-    "spotify-web-api-node": "^4.0.0"
+    "node-static": "^0.7.11"
   },
   "devDependencies": {
     "bulma": "^0.9.0",
