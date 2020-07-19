@@ -39,17 +39,25 @@ body {
   width: 100vw;
   box-shadow: 5px 5px 9px #4a4a52; }
 
-.none {
-  display: none; }
-
-.flex {
-  display: flex; }
-
 .hidden {
   opacity: 0; }
 
 .hidden:hover {
   opacity: 1; }
+
+#mic,
+#show,
+#stop,
+#resume,
+#pause,
+#upload,
+#spotifyback,
+#spotifyskip,
+#spotifypause,
+#spotifyresume,
+#spotifyshuffle,
+#spotifyshuffleoff {
+  display: none; }
 
 #title,
 #artist,

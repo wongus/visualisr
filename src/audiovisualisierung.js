@@ -28,37 +28,35 @@ var context = new AudioContext();
 let colorStart = '#ffbf46';
 let colorEnd = '#ffdab9';
 
-
 let userChoice = null;
 //using requestAnimationFrame instead of timeout...
 if (!window.requestAnimationFrame)
 	window.requestAnimationFrame = window.webkitRequestAnimationFrame;
 
-try {
-	if (window.location.href.endsWith('mp3')) {
-		console.log('using mp3');
-		document.getElementById('mic').classList.toggle('none');
+
+$(document).ready(function () {
+	if (window.location.href.endsWith('mp3')) { 
+		document.getElementById('stop').style.display = 'flex';
+		document.getElementById('pause').style.display = 'flex';
+		document.getElementById('upload').style.display = 'flex';
 	}
-} catch {
 
-}
-
-try {
 	if (window.location.href.endsWith('mic')) {
-		console.log('using mic');
-		document.getElementById('mic').classList.toggle('flex');
+			document.getElementById('mic').style.display = 'flex';
 	}
-} catch {
 
-}
-
-try {
-	if (window.location.href.endsWith('spotify')) {
-		console.log('using spotify');
+	if (window.location.href.endsWith('spotify')) { 
+		document.getElementById('spotifypause').style.display = 'flex';
+		document.getElementById('spotifyskip').style.display = 'flex';
+		document.getElementById('spotifyback').style.display = 'flex';
+		document.getElementById('spotifyshuffle').style.display = 'flex';
+		document.getElementById('eye').classList.remove('is-warning');
+		document.getElementById('show').classList.remove('is-warning');
+		document.getElementById('eye').classList.add('is-info');
+		document.getElementById('show').classList.add('is-info')
 	}
-} catch {
 
-}
+});
 
 
 
@@ -159,10 +157,39 @@ function resume() {
 	document.getElementById('resume').style.display = 'none';
 }
 
+function spotifyPause() {
+	Constr.pause();
+}
+
+function spotifyResume() {
+	Constr.play();
+}
+
+function spotifySkip() {
+	Constr.skipToNext();
+}
+
+function spotifyBack() {
+	Constr.skipToPrevious();
+}
+
 function stop() {
 	reset();
 	$("#title, #artist, #album").css("visibility", "hidden");
 	$("button, input").prop("disabled", false);
+}
+
+
+function spotifyPause() {
+	context.suspend();
+	document.getElementById('spotifypause').style.display = 'none';
+	document.getElementById('spotifyresume').style.display = 'flex';
+}
+
+function spotifyResume() {
+	context.resume();
+	document.getElementById('spotifypause').style.display = 'flex';
+	document.getElementById('spotifyresume').style.display = 'none';
 }
 
 function useMic() {
@@ -188,9 +215,9 @@ function useMic() {
 			//start updating
 			rafID = window.requestAnimationFrame(updateVisualization);
 
-			$("#title").html("wongus");
-			$("#album").html("//");
-			$("#artist").html("//");
+			$("#title").html("mic");
+			$("#album").html("input");
+			$("#artist").html("using");
 			onWindowResize();
 			$("#title, #artist, #album").css("visibility", "visible");
 		})
@@ -304,8 +331,26 @@ function updateVisualization() {
 
 function hide() {
 	buttons = document.getElementById('buttons');
-	buttons.classList.toggle('hidden')
+	buttons.classList.add('hidden')
+	document.getElementById('eye').style.display = 'none';
+	document.getElementById('show').style.display = 'flex';
+}
 
+function show() {
+	buttons = document.getElementById('buttons');
+	buttons.classList.remove('hidden');
+	document.getElementById('show').style.display = 'none';
+	document.getElementById('eye').style.display = 'flex';
+}
+
+function shuffle() {
+	document.getElementById('spotifyshuffle').style.display = 'none';
+	document.getElementById('spotifyshuffleoff').style.display = 'flex';
+}
+
+function shuffleOff() {
+	document.getElementById('spotifyshuffleoff').style.display = 'none';
+	document.getElementById('spotifyshuffle').style.display = 'flex';
 }
 
 function drawBars(array) {

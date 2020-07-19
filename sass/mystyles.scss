@@ -43,7 +43,7 @@ $info: $spotify;
     font-family: 'Sora';
     color: #ffffff;
     text-shadow: 1px 1px 0px $shadow,
-        -1px -1px 0px $highlight; 
+        -1px -1px 0px $highlight;
 }
 
 body {
@@ -56,15 +56,7 @@ body {
 #buttons {
     position: absolute;
     width: 100vw;
-    box-shadow:  5px 5px 9px $shadow; 
-}
-
-.none {
-    display: none;
-}
-
-.flex {
-    display: flex;
+    box-shadow: 5px 5px 9px $shadow;
 }
 
 .hidden {
@@ -73,6 +65,22 @@ body {
 
 .hidden:hover {
     opacity: 1;
+}
+
+
+#mic,
+#show,
+#stop,
+#resume,
+#pause,
+#upload,
+#spotifyback,
+#spotifyskip,
+#spotifypause,
+#spotifyresume,
+#spotifyshuffle,
+#spotifyshuffleoff {
+    display: none;
 }
 
 #title,

@@ -11,6 +11,7 @@
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spotify-web-api-js/1.4.0/spotify-web-api.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="src/bufferloader.js"></script>
     <script src="src/id3-minimized.js"></script>
@@ -23,28 +24,56 @@
         <div class="navbar-brand">
             <a class="navbar-item" href="index.html">
                 visualisr
-            </h1>
+                </h1>
 
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-end pr-3">
                 <div class="navbar-item">
                     <div class="buttons">
+                        <a id="mic" class="button is-warning is-rounded" onClick="useMic()"><i
+                                class="fas fa-microphone"></i>
                         </a>
-                        <a class="button is-warning is-rounded" onClick="stop()"><i class="fas fa-stop"></i>
+                        <a id="stop" class="button is-warning is-rounded" onClick="stop()"><i class="fas fa-stop"></i>
                         </a>
-                        <a id="resume" class="button is-warning is-rounded" onClick="resume()" style="display: none;"><i class="fas fa-play"></i>
+                        <a id="resume" class="button is-warning is-rounded" onClick="resume()"><i
+                                class="fas fa-play"></i>
                         </a>
-                        <a id="pause" class="button is-warning is-rounded" onClick="pause()" style="display: flex;"><i
-                            class="fas fa-pause"></i>
-                        <a class="button is-warning is-rounded" onClick="hide()"><i class="far fa-eye-slash"></i>
+                        <a id="pause" class="button is-warning is-rounded" onClick="pause()"><i
+                                class="fas fa-pause"></i>
                         </a>
+
+                        <a id="spotifyback" class="button is-info is-rounded" onClick="spotifyBack()"><i
+                                class="fas fa-step-backward"></i>
+                        </a>
+                        <a id="spotifypause" class="button is-info is-rounded" onClick="spotifyPause()"><i
+                                class="fas fa-pause"></i>
+                        </a>
+                        <a id="spotifyresume" class="button is-info is-rounded" onClick="spotifyResume()"><i
+                                class="fas fa-play"></i>
+                        </a>
+                        <a id="spotifyskip" class="button is-info is-rounded" onClick="spotifySkip()"><i
+                                class="fas fa-step-forward"></i>
+                        </a>
+                        <a id="spotifyshuffle" class="button is-info is-rounded" onClick="shuffle()"><i
+                                class="fas fa-random"></i>
+                        </a>
+                        <a id="spotifyshuffleoff" class="button is-info is-rounded" onClick="shuffleOff()"> <i
+                                class="fas fa-long-arrow-alt-right"></i>
+                        </a>
+
+                        <a id="eye" class="button is-warning is-rounded" onClick="hide()"><i
+                                class="far fa-eye-slash"></i>
+                        </a>
+                        <a id="show" class="button is-warning is-rounded" onClick="show()"><i class="far fa-eye"></i>
+                        </a>
+
                         <a id="upload" class="button pl-0 pr-0">
                             <div class="field">
                                 <div class="file is-warning is-rounded">

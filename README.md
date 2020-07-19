@@ -1,22 +1,35 @@
-# Web Audio Visualization
+# Spotify Accounts Authentication Examples
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=W44KZGZL2LFLL)
+This project contains basic demos showing the different OAuth 2.0 flows for [authenticating against the Spotify Web API](https://developer.spotify.com/web-api/authorization-guide/).
 
-Follow me on Twitter for future updates! [https://twitter.com/brandfamdom](https://twitter.com/brandfamdom)
+These examples cover:
 
-Please be aware, this project uses an XMLHttpRequest() to load the music files. Therefore, the index.html file necessarily needs to run on a server, either locally or online.  
-_For more information on how to run a local server, e.g. with node.js, visit the following [link](http://jasonwatmore.com/post/2016/06/22/nodejs-setup-simple-http-server-local-web-server)._
+* Authorization Code flow
+* Client Credentials flow
+* Implicit Grant flow
 
-![](https://mir-cdn.behance.net/v1/rendition/project_modules/1400/eb591949260123.596f8b760ab20.png)
+## Installation
 
-# Check it out in action!: [https:/dominikhofacker.github.io/audiovisualization/](https://bit.ly/2AbiKJ4)
+These examples run on Node.js. On [its website](http://www.nodejs.org/download/) you can find instructions on how to install it. You can also follow [this gist](https://gist.github.com/isaacs/579814) for a quick and easy way to install Node.js and npm.
 
-## Check out the project on behance to find out more: [https://www.behance.net/gallery/49260123/Web-Audio-Visualization](https://www.behance.net/gallery/49260123/Web-Audio-Visualization "More info on the project")
+Once installed, clone the repository and install its dependencies running:
 
-### YouTube: [https://youtu.be/PjaiWsNRHxE](https://youtu.be/PjaiWsNRHxE "YouTube Link")
+    $ npm install
 
-This project contains a sample music file from Valence (NCS Release). Make sure to support his music.
-[https://soundcloud.com/valence-music](https://soundcloud.com/valence-music)
-[https://twitter.com/miguel_valence_](https://twitter.com/miguel_valence_)
-[https://www.facebook.com/ValenceMusicOfficial/](https://www.facebook.com/ValenceMusicOfficial/)
-[https://www.youtube.com/watch?v=QHoqD47gQG8](https://www.youtube.com/watch?v=QHoqD47gQG8)
+### Using your own credentials
+You will need to register your app and get your own credentials from the Spotify for Developers Dashboard.
+
+To do so, go to [your Spotify for Developers Dashboard](https://beta.developer.spotify.com/dashboard) and create your application. For the examples, we registered these Redirect URIs:
+
+* http://localhost:8888 (needed for the implicit grant flow)
+* http://localhost:8888/callback
+
+Once you have created your app, replace the `client_id`, `redirect_uri` and `client_secret` in the examples with the ones you get from My Applications.
+
+## Running the examples
+In order to run the different examples, open the folder with the name of the flow you want to try out, and run its `app.js` file. For instance, to run the Authorization Code example do:
+
+    $ cd authorization_code
+    $ node app.js
+
+Then, open `http://localhost:8888` in a browser.
