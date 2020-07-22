@@ -20,56 +20,58 @@
 </head>
 
 <body>
-    <nav class="navbar is-primary" id="buttons" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-primary is-fixed-top" id="buttons" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="index">
                 visualisr
             </a>
         </div>
         <div class="navbar-menu">
-            <div class="navbar-end pr-3">
-                <div class="navbar-item">
+            <div class="navbar-end">
+                <div class="navbar-item p-0">
                     <div class="buttons">
-                        <a id="mic" class="button is-warning is-rounded" onClick="useMic()"><i
-                                class="fas fa-microphone"></i>
+                        <a id="mic" class="is-hidden-mobile button small-button is-warning is-rounded"
+                            onClick="useMic()"><i class="fas fa-microphone"></i>
                         </a>
-                        <a id="stop" class="button is-warning is-rounded" onClick="stop()"><i class="fas fa-stop"></i>
+                        <a id="stop" class="is-hidden-mobile is-desktop button is-warning is-rounded"
+                            onClick="stop()"><i class="fas fa-stop"></i>
                         </a>
-                        <a id="resume" class="button is-warning is-rounded" onClick="resume()"><i
+                        <a id="resume" class="is-hidden-mobile button is-warning is-rounded" onClick="resume()"><i
                                 class="fas fa-play"></i>
                         </a>
-                        <a id="pause" class="button is-warning is-rounded" onClick="pause()"><i
+                        <a id="pause" class="is-hidden-mobile button is-warning is-rounded" onClick="pause()"><i
                                 class="fas fa-pause"></i>
                         </a>
 
-                        <a id="spotifyback" class="button is-info is-rounded" onClick="spotifyBack()"><i
-                                class="fas fa-step-backward"></i>
+                        <a id="spotifyback" class="is-hidden-mobile button is-info is-rounded"
+                            onClick="spotifyBack()"><i class="fas fa-step-backward"></i>
                         </a>
-                        <a id="spotifypause" class="button is-info is-rounded" onClick="spotifyPause()"><i
-                                class="fas fa-pause"></i>
+                        <a id="spotifypause" class="is-hidden-mobile button is-info is-rounded"
+                            onClick="spotifyPause()"><i class="fas fa-pause"></i>
                         </a>
-                        <a id="spotifyresume" class="button is-info is-rounded" onClick="spotifyResume()"><i
-                                class="fas fa-play"></i>
+                        <a id="spotifyresume" class="is-hidden-mobile button is-info is-rounded"
+                            onClick="spotifyResume()"><i class="fas fa-play"></i>
                         </a>
-                        <a id="spotifyskip" class="button is-info is-rounded" onClick="spotifySkip()"><i
-                                class="fas fa-step-forward"></i>
+                        <a id="spotifyskip" class="is-hidden-mobile button is-info is-rounded"
+                            onClick="spotifySkip()"><i class="fas fa-step-forward"></i>
                         </a>
-                        <a id="spotifyshuffle" class="button is-info is-rounded" onClick="shuffle()"><i
+                        <a id="spotifyshuffle" class="is-hidden-mobile button is-info is-rounded" onClick="shuffle()"><i
                                 class="fas fa-random"></i>
                         </a>
-                        <a id="spotifyshuffleoff" class="button is-info is-rounded" onClick="shuffleOff()"> <i
-                                class="fas fa-long-arrow-alt-right"></i>
+                        <a id="spotifyshuffleoff" class="is-hidden-mobile button is-info is-rounded"
+                            onClick="shuffleOff()"> <i class="fas fa-long-arrow-alt-right"></i>
                         </a>
 
-                        <a id="eye" class="button is-warning is-rounded" onClick="hide()"><i
+                        <a id="eye" class="is-hidden-mobile button is-warning is-rounded" onClick="hide()"><i
                                 class="far fa-eye-slash"></i>
                         </a>
-                        <a id="show" class="button is-warning is-rounded" onClick="show()"><i class="far fa-eye"></i>
+                        <a id="show" class="is-hidden-mobile button is-warning is-rounded" onClick="show()"><i
+                                class="far fa-eye"></i>
                         </a>
 
-                        <a id="upload" class="button pl-0 pr-0">
+                        <a id="upload" class="button pl-0 pr-0 is-warning">
                             <div class="field">
-                                <div class="file is-warning is-rounded">
+                                <div class="file p-0 is-warning is-rounded">
                                     <label class="file-label">
                                         <input class="file-input" type="file" id="input"
                                             onchange="handleFiles(this.files)" />
@@ -97,6 +99,42 @@
         <div id="album">Unknown Album</div>
     </div>
     <canvas id="freq" width="100vw" height="100vh"></canvas>
+
+    <footer class="navbar is-fixed-bottom is-primary is-hidden-tablet level" id="buttonsfoot">
+        <div class="buttons center has-text-centered" style="width: 100vw; !important">
+            <a id="mic2" class="button is-warning is-rounded" onClick="useMic()"><i class="fas fa-microphone"></i>
+            </a>
+            <a id="stop2" class="button is-warning is-rounded" onClick="stop()"><i class="fas fa-stop"></i>
+            </a>
+            <a id="resume2" class="button is-warning is-rounded" onClick="resume()"><i class="fas fa-play"></i>
+            </a>
+            <a id="pause2" class="button is-warning is-rounded" onClick="pause()"><i class="fas fa-pause"></i>
+            </a>
+
+            <a id="spotifyback2" class="button is-info is-rounded" onClick="spotifyBack()"><i
+                    class="fas fa-step-backward"></i>
+            </a>
+            <a id="spotifypause2" class="button is-info is-rounded" onClick="spotifyPause()"><i
+                    class="fas fa-pause"></i>
+            </a>
+            <a id="spotifyresume2" class="button is-info is-rounded" onClick="spotifyResume()"><i
+                    class="fas fa-play"></i>
+            </a>
+            <a id="spotifyskip2" class="button is-info is-rounded" onClick="spotifySkip()"><i
+                    class="fas fa-step-forward"></i>
+            </a>
+            <a id="spotifyshuffle2" class="button is-info is-rounded" onClick="shuffle()"><i class="fas fa-random"></i>
+            </a>
+            <a id="spotifyshuffleoff2" class="button is-info is-rounded" onClick="shuffleOff()"> <i
+                    class="fas fa-long-arrow-alt-right"></i>
+            </a>
+
+            <a id="eye2" class="is-icon button is-warning is-rounded m-0" onClick="hide()"><i class="far fa-eye-slash"></i>
+            </a>
+            <a id="show2" class="is-icon button is-warning is-rounded m-0" onClick="show()"><i class="far fa-eye"></i>
+            </a>
+        </div>
+    </footer>
 </body>
 
 </html>

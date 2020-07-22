@@ -1,11 +1,3 @@
-@charset "UTF-8";
-/*
- * Audiovisualization using the html canvas element.
- * ©2017, Dominik Hofacker
- * https://www.behance.net/dominikhofacker
- * Please consider supporting this project on behance:
- * https://www.behance.net/gallery/49260123/Web-Audio-Visualization
- */
 #freq {
   left: 0;
   right: 0;
@@ -13,14 +5,9 @@
   position: absolute;
   background: #575761; }
 
-.navbar-item.navbar-center {
-  flex-grow: 1;
-  flex-direction: column;
-  justify-content: center; }
-
 .navbar-brand {
   font-family: 'Sora';
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-shadow: 1px 1px 0px #4a4a52, -1px -1px 0px #646470; }
 
 .brand {
@@ -31,12 +18,22 @@
 body {
   background: #575761;
   height: 100vh;
-  width: 100vw; }
-
-#buttons {
-  position: absolute;
   width: 100vw;
+  overflow: hidden;
+  position: relative; }
+
+.center {
+  margin-left: 50%;
+  transform: translate(-50%);
+  width: 200%; }
+
+#buttons,
+#buttonsfoot {
+  position: absolute;
   box-shadow: 5px 5px 9px #4a4a52; }
+
+#buttonsfoot {
+  box-shadow: -5px -5px 9px #4a4a52; }
 
 .hidden {
   opacity: 0; }
@@ -55,7 +52,19 @@ body {
 #spotifypause,
 #spotifyresume,
 #spotifyshuffle,
-#spotifyshuffleoff {
+#spotifyshuffleoff,
+#mic2,
+#show2,
+#stop2,
+#resume2,
+#pause2,
+#upload2,
+#spotifyback2,
+#spotifyskip2,
+#spotifypause2,
+#spotifyresume2,
+#spotifyshuffle2,
+#spotifyshuffleoff2 {
   display: none; }
 
 #title,
@@ -85,7 +94,6 @@ body {
 
 #album {
   font-size: 3vw;
-  /*font-size: 40px;*/
   margin-bottom: 0; }
 
 #loading {
@@ -112,7 +120,13 @@ body {
   #artist,
   #album {
     font-weight: 300;
-    font-size: 4.5vw; } }
+    font-size: 4.5vw; }
+  #title {
+    font-size: 10vw; } }
+
+@media screen and (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.5rem; } }
 
 /*! bulma.io v0.9.0 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
@@ -3587,7 +3601,7 @@ button.dropdown-item {
       border-color: #0a0a0a; }
     .navbar.is-white .navbar-burger {
       color: #0a0a0a; }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 0px) {
       .navbar.is-white .navbar-start > .navbar-item,
       .navbar.is-white .navbar-start .navbar-link,
       .navbar.is-white .navbar-end > .navbar-item,
@@ -3632,7 +3646,7 @@ button.dropdown-item {
       border-color: white; }
     .navbar.is-black .navbar-burger {
       color: white; }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 0px) {
       .navbar.is-black .navbar-start > .navbar-item,
       .navbar.is-black .navbar-start .navbar-link,
       .navbar.is-black .navbar-end > .navbar-item,
@@ -3677,7 +3691,7 @@ button.dropdown-item {
       border-color: rgba(0, 0, 0, 0.7); }
     .navbar.is-light .navbar-burger {
       color: rgba(0, 0, 0, 0.7); }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 0px) {
       .navbar.is-light .navbar-start > .navbar-item,
       .navbar.is-light .navbar-start .navbar-link,
       .navbar.is-light .navbar-end > .navbar-item,
@@ -3722,7 +3736,7 @@ button.dropdown-item {
       border-color: #fff; }
     .navbar.is-dark .navbar-burger {
       color: #fff; }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 0px) {
       .navbar.is-dark .navbar-start > .navbar-item,
       .navbar.is-dark .navbar-start .navbar-link,
       .navbar.is-dark .navbar-end > .navbar-item,
@@ -3767,7 +3781,7 @@ button.dropdown-item {
       border-color: #fff; }
     .navbar.is-primary .navbar-burger {
       color: #fff; }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 0px) {
       .navbar.is-primary .navbar-start > .navbar-item,
       .navbar.is-primary .navbar-start .navbar-link,
       .navbar.is-primary .navbar-end > .navbar-item,
@@ -3812,7 +3826,7 @@ button.dropdown-item {
       border-color: #fff; }
     .navbar.is-link .navbar-burger {
       color: #fff; }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 0px) {
       .navbar.is-link .navbar-start > .navbar-item,
       .navbar.is-link .navbar-start .navbar-link,
       .navbar.is-link .navbar-end > .navbar-item,
@@ -3857,7 +3871,7 @@ button.dropdown-item {
       border-color: rgba(0, 0, 0, 0.7); }
     .navbar.is-info .navbar-burger {
       color: rgba(0, 0, 0, 0.7); }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 0px) {
       .navbar.is-info .navbar-start > .navbar-item,
       .navbar.is-info .navbar-start .navbar-link,
       .navbar.is-info .navbar-end > .navbar-item,
@@ -3902,7 +3916,7 @@ button.dropdown-item {
       border-color: #fff; }
     .navbar.is-success .navbar-burger {
       color: #fff; }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 0px) {
       .navbar.is-success .navbar-start > .navbar-item,
       .navbar.is-success .navbar-start .navbar-link,
       .navbar.is-success .navbar-end > .navbar-item,
@@ -3947,7 +3961,7 @@ button.dropdown-item {
       border-color: rgba(0, 0, 0, 0.7); }
     .navbar.is-warning .navbar-burger {
       color: rgba(0, 0, 0, 0.7); }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 0px) {
       .navbar.is-warning .navbar-start > .navbar-item,
       .navbar.is-warning .navbar-start .navbar-link,
       .navbar.is-warning .navbar-end > .navbar-item,
@@ -3992,7 +4006,7 @@ button.dropdown-item {
       border-color: #fff; }
     .navbar.is-danger .navbar-burger {
       color: #fff; }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 0px) {
       .navbar.is-danger .navbar-start > .navbar-item,
       .navbar.is-danger .navbar-start .navbar-link,
       .navbar.is-danger .navbar-end > .navbar-item,
@@ -4175,7 +4189,7 @@ a.navbar-item,
   height: 2px;
   margin: 0.5rem 0; }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: -1px) {
   .navbar > .container {
     display: block; }
   .navbar-brand .navbar-item,
@@ -4212,7 +4226,7 @@ a.navbar-item,
   body.has-navbar-fixed-bottom-touch {
     padding-bottom: 3.25rem; } }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 0px) {
   .navbar,
   .navbar-menu,
   .navbar-start,

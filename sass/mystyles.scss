@@ -10,14 +10,6 @@ $secondary: $highlight;
 $warning: $branding;
 $info: $spotify;
 
-/*
- * Audiovisualization using the html canvas element.
- * ©2017, Dominik Hofacker
- * https://www.behance.net/dominikhofacker
- * Please consider supporting this project on behance:
- * https://www.behance.net/gallery/49260123/Web-Audio-Visualization
- */
-
 #freq {
     left: 0;
     right: 0;
@@ -26,15 +18,9 @@ $info: $spotify;
     background: $primary;
 }
 
-.navbar-item.navbar-center {
-    flex-grow: 1;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .navbar-brand {
     font-family: 'Sora';
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-shadow: 1px 1px 0px $shadow,
         -1px -1px 0px $highlight;
 }
@@ -50,12 +36,24 @@ body {
     background: $primary;
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
+    position: relative;
 }
 
-#buttons {
+.center {
+    margin-left: 50%;
+    transform: translate(-50%);
+    width: 200%;
+}
+
+#buttons,
+#buttonsfoot {
     position: absolute;
-    width: 100vw;
     box-shadow: 5px 5px 9px $shadow;
+}
+
+#buttonsfoot {
+    box-shadow: -5px -5px 9px $shadow;
 }
 
 .hidden {
@@ -78,7 +76,19 @@ body {
 #spotifypause,
 #spotifyresume,
 #spotifyshuffle,
-#spotifyshuffleoff {
+#spotifyshuffleoff,
+#mic2,
+#show2,
+#stop2,
+#resume2,
+#pause2,
+#upload2,
+#spotifyback2,
+#spotifyskip2,
+#spotifypause2,
+#spotifyresume2,
+#spotifyshuffle2,
+#spotifyshuffleoff2 {
     display: none;
 }
 
@@ -113,7 +123,6 @@ body {
 
 #album {
     font-size: 3vw;
-    /*font-size: 40px;*/
     margin-bottom: 0;
 }
 
@@ -152,6 +161,19 @@ body {
         font-weight: 300;
         font-size: 4.5vw;
     }
+
+    #title {
+        font-size: 10vw;
+    }
 }
 
+@media screen and (max-width: 768px) {
+    .navbar-brand {
+
+        font-size: 1.5rem;
+    }
+}
+
+@import "../node_modules/bulma/sass/utilities/initial-variables.sass";
+$navbar-breakpoint: $off;
 @import "../node_modules/bulma/bulma.sass";

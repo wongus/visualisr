@@ -39,10 +39,14 @@ $(document).ready(function () {
 		document.getElementById('stop').style.display = 'flex';
 		document.getElementById('pause').style.display = 'flex';
 		document.getElementById('upload').style.display = 'flex';
+		document.getElementById('stop2').style.display = 'flex';
+		document.getElementById('pause2').style.display = 'flex';
+		document.getElementById('upload2').style.display = 'flex';
 	}
 
 	if (window.location.href.endsWith('mic')) {
 			document.getElementById('mic').style.display = 'flex';
+			document.getElementById('mic2').style.display = 'flex';
 	}
 
 	if (window.location.href.endsWith('spotify')) { 
@@ -54,6 +58,15 @@ $(document).ready(function () {
 		document.getElementById('show').classList.remove('is-warning');
 		document.getElementById('eye').classList.add('is-info');
 		document.getElementById('show').classList.add('is-info')
+
+		document.getElementById('spotifypause2').style.display = 'flex';
+		document.getElementById('spotifyskip2').style.display = 'flex';
+		document.getElementById('spotifyback2').style.display = 'flex';
+		document.getElementById('spotifyshuffle2').style.display = 'flex';
+		document.getElementById('eye2').classList.remove('is-warning');
+		document.getElementById('show2').classList.remove('is-warning');
+		document.getElementById('eye2').classList.add('is-info');
+		document.getElementById('show2').classList.add('is-info')
 	}
 
 });
@@ -149,12 +162,18 @@ function pause() {
 	context.suspend();
 	document.getElementById('pause').style.display = 'none';
 	document.getElementById('resume').style.display = 'flex';
+
+	document.getElementById('pause2').style.display = 'none';
+	document.getElementById('resume2').style.display = 'flex';
 }
 
 function resume() {
 	context.resume();
 	document.getElementById('pause').style.display = 'flex';
 	document.getElementById('resume').style.display = 'none';
+
+	document.getElementById('pause2').style.display = 'flex';
+	document.getElementById('resume2').style.display = 'none';
 }
 
 function spotifyPause() {
@@ -184,12 +203,18 @@ function spotifyPause() {
 	context.suspend();
 	document.getElementById('spotifypause').style.display = 'none';
 	document.getElementById('spotifyresume').style.display = 'flex';
+
+	document.getElementById('spotifypause2').style.display = 'none';
+	document.getElementById('spotifyresume2').style.display = 'flex';
 }
 
 function spotifyResume() {
 	context.resume();
 	document.getElementById('spotifypause').style.display = 'flex';
 	document.getElementById('spotifyresume').style.display = 'none';
+
+	document.getElementById('spotifypause2').style.display = 'flex';
+	document.getElementById('spotifyresume2').style.display = 'none';
 }
 
 function useMic() {
@@ -331,26 +356,42 @@ function updateVisualization() {
 
 function hide() {
 	buttons = document.getElementById('buttons');
-	buttons.classList.add('hidden')
+	footer = document.getElementById('buttonsfoot');
+	buttons.classList.add('hidden');
+	footer.classList.add('hidden');
 	document.getElementById('eye').style.display = 'none';
 	document.getElementById('show').style.display = 'flex';
+
+	document.getElementById('eye2').style.display = 'none';
+	document.getElementById('show2').style.display = 'flex';
 }
 
 function show() {
 	buttons = document.getElementById('buttons');
+	footer = document.getElementById('buttonsfoot');
 	buttons.classList.remove('hidden');
+	footer.classList.remove('hidden');
 	document.getElementById('show').style.display = 'none';
 	document.getElementById('eye').style.display = 'flex';
+
+	document.getElementById('show2').style.display = 'none';
+	document.getElementById('eye2').style.display = 'flex';
 }
 
 function shuffle() {
 	document.getElementById('spotifyshuffle').style.display = 'none';
 	document.getElementById('spotifyshuffleoff').style.display = 'flex';
+
+	document.getElementById('spotifyshuffle2').style.display = 'none';
+	document.getElementById('spotifyshuffleoff2').style.display = 'flex';
 }
 
 function shuffleOff() {
 	document.getElementById('spotifyshuffleoff').style.display = 'none';
 	document.getElementById('spotifyshuffle').style.display = 'flex';
+
+	document.getElementById('spotifyshuffleoff2').style.display = 'none';
+	document.getElementById('spotifyshuffle2').style.display = 'flex';
 }
 
 function drawBars(array) {
