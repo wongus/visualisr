@@ -240,9 +240,9 @@ function useMic() {
 			//start updating
 			rafID = window.requestAnimationFrame(updateVisualization);
 
-			$("#title").html("mic");
-			$("#album").html("input");
-			$("#artist").html("using");
+			$("#title").html("");
+			$("#album").html("");
+			$("#artist").html("");
 			onWindowResize();
 			$("#title, #artist, #album").css("visibility", "visible");
 		})
