@@ -23,9 +23,7 @@ body {
   position: relative; }
 
 .center {
-  margin-left: 50%;
-  transform: translate(-50%);
-  width: 200%; }
+  margin: auto; }
 
 #buttons,
 #buttonsfoot {
