@@ -12,14 +12,17 @@
 </head>
 
 <body>
-    <nav class="navbar is-primary" id="buttons" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-primary is-fixed-top" id="buttons" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <p class="navbar-item">
+            <a class="navbar-item" href="index">
                 visualisr
-            </p>
+            </a>
         </div>
-        <div id="navbarBasicExample" class="navbar-menu">
-
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item p-0">
+                </div>
+            </div>
         </div>
     </nav>
     <section class="hero is-primary is-fullheight">
@@ -36,12 +39,16 @@
                 </div>
 
                 <div class="has-text-centered">
-                    <a href="visualiser?mp3" class="button is-warning is-rounded is-size-7-mobile"><i class="far fa-file-audio pr-1"></i>Use an mp3</a>
-                    <a href="visualiser?mic" class="button is-warning is-rounded is-size-7-mobile"><i class="fas fa-microphone-alt pr-1"></i>Use your mic</a>
-                    <a href="visualiser?spotify" class="button is-info is-rounded is-size-7-mobile" disabled><i class="fab fa-spotify pr-1"></i>Use spotify</a>
+                    <a href="visualiser?mp3" class="button is-warning is-rounded is-size-7-mobile"><i
+                            class="far fa-file-audio pr-1"></i>Use an mp3</a>
+                    <a href="visualiser?mic" class="button is-warning is-rounded is-size-7-mobile"><i
+                            class="fas fa-microphone-alt pr-1"></i>Use your mic</a>
+                    <a href="visualiser?spotify" class="button is-info is-rounded is-size-7-mobile" disabled><i
+                            class="fab fa-spotify pr-1"></i>Use spotify</a>
                 </div>
             </div>
         </div>
     </section>
 </body>
+
 </html>
