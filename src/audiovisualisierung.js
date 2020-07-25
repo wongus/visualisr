@@ -21,27 +21,27 @@ let colorStart = '#ffbf46';
 let colorEnd = '#ffdab9';
 
 let userChoice = null;
+
 //using requestAnimationFrame instead of timeout...
 if (!window.requestAnimationFrame)
 	window.requestAnimationFrame = window.webkitRequestAnimationFrame;
 
 
 $(document).ready(function () {
-	if (window.location.href.endsWith('mp3')) { 
+	if (window.location.href.endsWith('mp3')) {
 		document.getElementById('stop').style.display = 'flex';
 		document.getElementById('pause').style.display = 'flex';
 		document.getElementById('upload').style.display = 'flex';
 		document.getElementById('stop2').style.display = 'flex';
 		document.getElementById('pause2').style.display = 'flex';
-		document.getElementById('upload2').style.display = 'flex';
 	}
 
 	if (window.location.href.endsWith('mic')) {
-			document.getElementById('mic').style.display = 'flex';
-			document.getElementById('mic2').style.display = 'flex';
+		document.getElementById('mic').style.display = 'flex';
+		document.getElementById('mic2').style.display = 'flex';
 	}
 
-	if (window.location.href.endsWith('spotify')) { 
+	if (window.location.href.endsWith('spotify')) {
 		document.getElementById('spotifypause').style.display = 'flex';
 		document.getElementById('spotifyskip').style.display = 'flex';
 		document.getElementById('spotifyback').style.display = 'flex';
@@ -189,7 +189,6 @@ function stop() {
 	$("#title, #artist, #album").css("visibility", "hidden");
 	$("button, input").prop("disabled", false);
 }
-
 
 function spotifyPause() {
 	context.suspend();
@@ -386,6 +385,20 @@ function shuffleOff() {
 	document.getElementById('spotifyshuffle2').style.display = 'flex';
 }
 
+let liteMode = "false";
+
+function lite() {
+	liteMode = "true";
+	document.getElementById('lite').style.display = 'none';
+	document.getElementById('liteOff').style.display = 'flex';
+}
+
+function liteOff() {
+	liteMode = "false";
+	document.getElementById('liteOff').style.display = 'none';
+	document.getElementById('lite').style.display = 'flex';
+}
+
 function drawBars(array) {
 
 	//just show bins with a value over the treshold
@@ -395,7 +408,8 @@ function drawBars(array) {
 	//the max count of bins for the visualization
 	var maxBinCount = array.length;
 	//space between bins
-	var space = 10;
+	var space = 12;
+	let liteModeStatus = liteMode;
 
 	// simply replace 'spectrumGradient' with the desired colour to get a single-coloured visualiser
 	let spectrumGradient = ctx.createLinearGradient(0, 0, 0, 170);
@@ -431,12 +445,20 @@ function drawBars(array) {
 		if (value >= threshold) {
 
 			//draw curved bin
-			ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
 			ctx.rotate((180 / 128) * Math.PI / 180);
+			ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
 
-			//draw outer shapes
-			ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
-			ctx.fillRect(0 - i * space, c.height - value, 2 , c.height);
+			if (liteMode == "false") {
+				//draw outer shapes left-bottom-focused
+				ctx.fillRect(0 + i * space, c.height - value, 1, c.height);
+				ctx.fillRect(0 - i * space, c.height - value, -1, c.height);
+
+				//draw outer shapes left-top-focused
+				ctx.fillRect(0 + i * space, -(c.height - value), 1, -c.height);
+				ctx.fillRect(0 - i * space, -(c.height - value), -1, -c.height);
+			} else {
+
+			}
 		}
 	}
 
@@ -444,39 +466,24 @@ function drawBars(array) {
 
 		var value = array[i];
 		if (value >= threshold) {
-			
+
 			//draw curved bin
 			ctx.rotate(-(180 / 128) * Math.PI / 180);
 			ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
 
-			//draw outer shapes
-			ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
-			ctx.fillRect(0 - i * space, c.height - value, 2 , c.height);
+			if (liteMode == "false") {
+				//draw outer shapes right-bottom-focused
+				ctx.fillRect(0 + i * space, c.height - value, 1, c.height);
+				ctx.fillRect(0 - i * space, c.height - value, -1, c.height);
+
+				//draw outer shapes right-top-focused
+				ctx.fillRect(0 + i * space, -(c.height - value), 1, -c.height);
+				ctx.fillRect(0 - i * space, -(c.height - value), -1, -c.height);
+			} else {
+
+			}
 		}
 	}
-
-	//both hash ring sides
-	// for (var i = 0; i < maxBinCount; i++) {
-
-	// 	var value = array[i];
-	// 	if (value >= threshold) {
-
-	// 		//draw straight bin
-	// 		ctx.rotate((180 / 128) * Math.PI / 180);
-	// 		ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
-	// 	}
-	// }
-
-	// for (var i = 0; i < maxBinCount; i++) {
-
-	// 	var value = array[i];
-	// 	if (value >= threshold) {
-		
-	// 		//draw straight bin
-	// 		ctx.rotate((180 / 128) * Math.PI / 180);
-	// 		ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
-	// 	}
-	// }
 
 	ctx.restore();
 }
