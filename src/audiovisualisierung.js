@@ -408,7 +408,7 @@ function drawBars(array) {
 	//the max count of bins for the visualization
 	var maxBinCount = array.length;
 	//space between bins
-	var space = 17;
+	var space = 12;
 	let liteModeStatus = liteMode;
 
 	// simply replace 'spectrumGradient' with the desired colour to get a single-coloured visualiser
