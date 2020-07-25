@@ -408,7 +408,7 @@ function drawBars(array) {
 	//the max count of bins for the visualization
 	var maxBinCount = array.length;
 	//space between bins
-	var space = 12;
+	var space = 17;
 	let liteModeStatus = liteMode;
 
 	// simply replace 'spectrumGradient' with the desired colour to get a single-coloured visualiser
@@ -445,7 +445,6 @@ function drawBars(array) {
 		if (value >= threshold) {
 
 			//draw curved bin
-			ctx.rotate((180 / 128) * Math.PI / 180);
 			ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
 
 			if (liteMode == "false") {
@@ -456,9 +455,9 @@ function drawBars(array) {
 				//draw outer shapes left-top-focused
 				ctx.fillRect(0 + i * space, -(c.height - value), 1, -c.height);
 				ctx.fillRect(0 - i * space, -(c.height - value), -1, -c.height);
-			} else {
-
 			}
+
+			ctx.rotate((180 / 128) * Math.PI / 180);
 		}
 	}
 
@@ -468,7 +467,6 @@ function drawBars(array) {
 		if (value >= threshold) {
 
 			//draw curved bin
-			ctx.rotate(-(180 / 128) * Math.PI / 180);
 			ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
 
 			if (liteMode == "false") {
@@ -479,9 +477,9 @@ function drawBars(array) {
 				//draw outer shapes right-top-focused
 				ctx.fillRect(0 + i * space, -(c.height - value), 1, -c.height);
 				ctx.fillRect(0 - i * space, -(c.height - value), -1, -c.height);
-			} else {
+			} 
 
-			}
+			ctx.rotate(-(180 / 128) * Math.PI / 180);
 		}
 	}
 
