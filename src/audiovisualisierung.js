@@ -16,9 +16,8 @@ var AudioContext = AudioContext || webkitAudioContext;
 //create the context.
 var context = new AudioContext();
 
-//change the colours used in the gradient
-let colorStart = '#ffbf46';
-let colorEnd = '#ffdab9';
+//change the colour of the visualiser
+let colour = '#ffbf46';
 
 let userChoice = null;
 
@@ -39,6 +38,7 @@ $(document).ready(function () {
 	if (window.location.href.endsWith('mic')) {
 		document.getElementById('mic').style.display = 'flex';
 		document.getElementById('mic2').style.display = 'flex';
+		colour = '#f4f1de'
 	}
 
 	if (window.location.href.endsWith('spotify')) {
@@ -411,12 +411,7 @@ function drawBars(array) {
 	var space = 12;
 	let liteModeStatus = liteMode;
 
-	// simply replace 'spectrumGradient' with the desired colour to get a single-coloured visualiser
-	let spectrumGradient = ctx.createLinearGradient(0, 0, 0, 170);
-	spectrumGradient.addColorStop(0, colorStart);
-	spectrumGradient.addColorStop(1, colorEnd);
-
-	ctx.fillStyle = spectrumGradient;
+	ctx.fillStyle = colour;
 
 	ctx.save();
 
