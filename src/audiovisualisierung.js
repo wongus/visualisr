@@ -1,11 +1,3 @@
-/*
- * Audiovisualization using the html canvas element.
- * ©2017, Dominik Hofacker
- * https://www.behance.net/dominikhofacker
- * Please consider supporting this project on behance:
- * https://www.behance.net/gallery/49260123/Web-Audio-Visualization
- */
-
 var rafID = null;
 var analyser = null;
 var c = null;
@@ -403,7 +395,7 @@ function drawBars(array) {
 	//the max count of bins for the visualization
 	var maxBinCount = array.length;
 	//space between bins
-	var space = 3;
+	var space = 10;
 
 	// simply replace 'spectrumGradient' with the desired colour to get a single-coloured visualiser
 	let spectrumGradient = ctx.createLinearGradient(0, 0, 0, 170);
@@ -437,9 +429,11 @@ function drawBars(array) {
 
 		var value = array[i];
 		if (value >= threshold) {
-			//draw bin
-			//ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
-			//ctx.fillRect(i * space, c.height, 2, -value);
+			//draw straight bin
+			//(starting position - index * space between)
+			ctx.fillRect(0 - i * space, c.height - value, 2 , c.height);
+
+			//draw curved bin
 			ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
 			ctx.rotate((180 / 128) * Math.PI / 180);
 		}
@@ -450,26 +444,14 @@ function drawBars(array) {
 		var value = array[i];
 		if (value >= threshold) {
 
-			//draw bin
-			//ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
-			//ctx.fillRect(i * space, c.height, 2, -value);
+			//draw straight bin
+			ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
+			
+			//draw curved bin
 			ctx.rotate(-(180 / 128) * Math.PI / 180);
 			ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
 		}
 	}
-
-	// for (var i = 0; i < maxBinCount; i++) {
-
-	// 	var value = array[i];
-	// 	if (value >= threshold) {
-
-	// 		//draw bin
-	// 		//ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
-	// 		//ctx.fillRect(i * space, c.height, 2, -value);
-	// 		ctx.rotate((180 / 128) * Math.PI / 180);
-	// 		ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
-	// 	}
-	// }
 
 	ctx.restore();
 }
