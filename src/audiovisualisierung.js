@@ -408,7 +408,7 @@ function drawBars(array) {
 	//the max count of bins for the visualization
 	var maxBinCount = array.length;
 	//space between bins
-	var space = 12;
+	var space = 13;
 	let liteModeStatus = liteMode;
 
 	ctx.fillStyle = colour;
