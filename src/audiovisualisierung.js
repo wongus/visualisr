@@ -429,13 +429,14 @@ function drawBars(array) {
 
 		var value = array[i];
 		if (value >= threshold) {
-			//draw straight bin
-			//(starting position - index * space between)
-			ctx.fillRect(0 - i * space, c.height - value, 2 , c.height);
 
 			//draw curved bin
 			ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
 			ctx.rotate((180 / 128) * Math.PI / 180);
+
+			//draw outer shapes
+			ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
+			ctx.fillRect(0 - i * space, c.height - value, 2 , c.height);
 		}
 	}
 
@@ -443,15 +444,39 @@ function drawBars(array) {
 
 		var value = array[i];
 		if (value >= threshold) {
-
-			//draw straight bin
-			ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
 			
 			//draw curved bin
 			ctx.rotate(-(180 / 128) * Math.PI / 180);
 			ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
+
+			//draw outer shapes
+			ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
+			ctx.fillRect(0 - i * space, c.height - value, 2 , c.height);
 		}
 	}
+
+	//both hash ring sides
+	// for (var i = 0; i < maxBinCount; i++) {
+
+	// 	var value = array[i];
+	// 	if (value >= threshold) {
+
+	// 		//draw straight bin
+	// 		ctx.rotate((180 / 128) * Math.PI / 180);
+	// 		ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
+	// 	}
+	// }
+
+	// for (var i = 0; i < maxBinCount; i++) {
+
+	// 	var value = array[i];
+	// 	if (value >= threshold) {
+		
+	// 		//draw straight bin
+	// 		ctx.rotate((180 / 128) * Math.PI / 180);
+	// 		ctx.fillRect(0 + i * space, c.height - value, 2 , c.height);
+	// 	}
+	// }
 
 	ctx.restore();
 }
