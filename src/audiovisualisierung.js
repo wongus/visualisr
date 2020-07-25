@@ -442,7 +442,7 @@ function drawBars(array) {
 			//draw curved bin
 			ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
 
-			if (liteMode == "false" && i !== 0) {
+			if (liteMode == "false" && i > 35) {
 				//draw outer shapes left-bottom-focused
 				ctx.fillRect(0 + i * space, c.height - value, 1, c.height);
 				ctx.fillRect(0 - i * space, c.height - value, -1, c.height);
@@ -464,7 +464,7 @@ function drawBars(array) {
 			//draw curved bin
 			ctx.fillRect(0, radius, $(window).width() <= 450 ? 2 : 3, -value / bar_length_factor);
 
-			if (liteMode == "false") {
+			if (liteMode == "false" && i > 35) {
 				//draw outer shapes right-bottom-focused
 				ctx.fillRect(0 + i * space, c.height - value, 1, c.height);
 				ctx.fillRect(0 - i * space, c.height - value, -1, c.height);
